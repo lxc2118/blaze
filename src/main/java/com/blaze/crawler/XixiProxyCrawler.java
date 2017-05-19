@@ -10,6 +10,11 @@ import com.blaze.biz.Proxy;
 
 public class XixiProxyCrawler extends AbsCrawler{
 
+	public XixiProxyCrawler(IBug bug) {
+		super(bug);
+	}
+
+
 	@Override
 	public void doCrawl() {
 		Document doc = Jsoup.parse(this.getHtml());
@@ -23,7 +28,6 @@ public class XixiProxyCrawler extends AbsCrawler{
                 System.out.println(tdList.get(1).html());
                 System.out.println(tdList.get(2).html());
                 
-                // 验证代理ip
 //                String ipTest = new HttpReq("http://1212.ip138.com/ic.asp").setProxy(tdList.get(1).html(), Integer.parseInt(tdList.get(2).html())).execute();
 //                if (ipTest==null)
 //                    continue;
@@ -38,7 +42,7 @@ public class XixiProxyCrawler extends AbsCrawler{
 //                proxy.setAddress(tdList.get(3).html());
 //                proxy.setAnonymity(tdList.get(4).html());
 //                proxy.setType(tdList.get(5).html());
-//                String speedStr = tdList.get(6).select("div").get(0).attr("title").replace("秒", "");
+//                String speedStr = tdList.get(6).select("div").get(0).attr("title").replace("绉�", "");
 //                proxy.setSpeed(Double.parseDouble(speedStr));
 //                proxy.setUpdateTime(new Date());
 //                proxy.save();
@@ -48,8 +52,4 @@ public class XixiProxyCrawler extends AbsCrawler{
         }
 	}
 
-	
-	public static void main(String[] args) {
-		
-	}
 }

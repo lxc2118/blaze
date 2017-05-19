@@ -3,6 +3,10 @@ package com.blaze.crawler;
 import hcy.util.kit.http.HttpReq;
 
 public abstract class AbsCrawler {
+	
+	public AbsCrawler(IBug bug){
+		this.bug = bug;
+	}
 
 	protected IBug bug;
 

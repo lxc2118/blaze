@@ -1,29 +1,32 @@
 package com.blaze.crawler;
 
-public class BaseBug implements IBug{
+import java.util.List;
 
-	@Override
-	public void setUrl(String url) {
-		// TODO Auto-generated method stub
-		
+public class BaseBug extends AbsBug{
+	
+	public BaseBug(String matchUrl) {
+		this.matchUrl = matchUrl;
 	}
 
-	@Override
-	public String getUrl() {
-		// TODO Auto-generated method stub
+	/**
+	 * ∆•≈‰url
+	 */
+	private String matchUrl;
+	
+	public String getMatchUrl() {
+		return matchUrl;
+	}
+
+
+
+	public void setMatchUrl(String matchUrl) {
+		this.matchUrl = matchUrl;
+	}
+
+
+
+	public List<String> getUrls() {
 		return null;
 	}
-
-	@Override
-	public void setDelay(Long time) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public Long getDelay() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	
 }
