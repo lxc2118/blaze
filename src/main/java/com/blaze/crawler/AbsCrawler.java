@@ -1,7 +1,5 @@
 package com.blaze.crawler;
 
-import hcy.util.kit.http.HttpReq;
-
 public abstract class AbsCrawler {
 	
 	public AbsCrawler(IBug bug){
@@ -25,7 +23,7 @@ public abstract class AbsCrawler {
 	
 	public String getHtml() {
 		if (this.bug.getUrl()!=null) {
-			return new HttpReq(this.bug.getUrl()).doExecute();
+//			return new HttpReq(this.bug.getUrl()).doExecute();
 		}
 		return "";
 	}
