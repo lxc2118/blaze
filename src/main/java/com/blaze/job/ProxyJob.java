@@ -30,18 +30,23 @@ public class ProxyJob implements Job {
 //    private ProxyDao proxyDao;
     
 	@Override
-	public void execute(JobExecutionContext context) throws JobExecutionException {
+	public void execute(JobExecutionContext context) {
 //		for (int page = 1; page < 2; page++) {
 //            String url = xixiDaili.replace("{p}", page + "");
+		try {
 			String url = xixiDaili.replace("{p}", "1");
-			System.out.println(url);
+			System.out.println(new Date());
             String html = new HttpReq(url).execute();
-            parseHtml(html);
-            try {
-                Thread.sleep(10000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            System.out.println(html);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+//            parseHtml(html);
+//            try {
+//                Thread.sleep(10000);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
 //        }
 	}
 

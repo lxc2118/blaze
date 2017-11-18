@@ -3,25 +3,22 @@ package blaze;
 import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.blaze.biz.User;
-import com.blaze.service.UserService;
+import com.blaze.biz.Proxy;
+import com.blaze.service.ProxyService;
+import com.blaze.test.TestBase;
 
-@RunWith(SpringJUnit4ClassRunner.class) // 表示继承了SpringJUnit4ClassRunner类
+@RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:spring-mybatis.xml" })
-
-public class TestMyBatis {
+public class TestMyBatis extends TestBase{
 	private static Logger logger = Logger.getLogger(TestMyBatis.class);
-	// private ApplicationContext ac = null;
+
 	@Resource
-	private UserService userService;
+	private ProxyService proxyService;
 
 //	 @Before
 //	 public void before() {
@@ -31,9 +28,7 @@ public class TestMyBatis {
 
 	@Test
 	public void test1() {
-		User user = userService.findById(1);
-		System.out.println(user.getUsername());
-		// logger.info("值："+user.getUserName());
-		// logger.info(JSON.toJSONString(user));
+		Proxy proxy = proxyService.get(1);
+		System.out.println(proxy.getIp());
 	}
 }

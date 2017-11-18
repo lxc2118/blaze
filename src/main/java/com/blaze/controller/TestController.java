@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.SerializeConfig;
-import com.alibaba.fastjson.serializer.SerializeFilter;
-import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.blaze.biz.Proxy;
 
 @Controller
@@ -25,7 +23,7 @@ public class TestController {
         return "index";
     }
     
-//    @ResponseBody
+    @ResponseBody
     @RequestMapping("/hello1")
     public Object hello1() {
     	Proxy proxy = new Proxy();
@@ -39,7 +37,7 @@ public class TestController {
     }
     
     @ResponseBody
-    @RequestMapping("/proxy")
+    @RequestMapping("/hello2")
     public Object proxy() {
     	List<Proxy> list = new ArrayList<>();
     	Proxy p1 = new Proxy();

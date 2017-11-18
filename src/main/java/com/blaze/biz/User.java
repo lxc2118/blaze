@@ -1,6 +1,9 @@
 package com.blaze.biz;
 
 import java.io.Serializable;
+import java.util.Collection;
+
+import org.springframework.security.core.GrantedAuthority;
 
 public class User implements Serializable{
 
@@ -49,14 +52,5 @@ public class User implements Serializable{
     public void setPassword(String password) {
         this.password = password;
     }
-
-
-    @Override
-    public String toString() {
-        return "UserBean [id=" + id + ", username=" + username + ", password=" + password + "]";
-    }
-    
-    
-    
 
 }

@@ -11,7 +11,7 @@ public class TestBase extends TestCase {
 
 	public TestBase() {
 		try {
-			new ClassPathXmlApplicationContext("applicationContext.xml");
+			ac = new ClassPathXmlApplicationContext("spring-mybatis.xml");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

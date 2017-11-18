@@ -30,7 +30,7 @@ public class QuartZTest extends HttpServlet{
 			// .startNow().build();
 			
 			Trigger trigger = TriggerBuilder.newTrigger().withIdentity("simpleTrigger", "triggerGroup")
-					.withSchedule(CronScheduleBuilder.cronSchedule("0/5 * * * * ?")).startNow().build();
+					.withSchedule(CronScheduleBuilder.cronSchedule("0/30 * * * * ?")).startNow().build();
 			scheduler.scheduleJob(job, trigger);
 			scheduler.start();
 			System.out.println("¶¨Ê±Æ÷Æô¶¯");

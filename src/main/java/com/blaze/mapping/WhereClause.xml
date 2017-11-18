@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper  namespace="sql">
+
+  <sql id="where">
+  		<foreach collection="tables"  item="item">
+	 	
+	 		 ${item.sql}
+	 	</foreach>
+		<where>
+		 	<foreach collection="list" item="item"  separator="and">
+		 		 
+		 		<if test="item.simple">
+		 			
+		 			 ${item.sql}
+					<if test="item.hasValue">
+						
+						<if test="item.singleValue" >
+							#{item.value}
+						</if>
+						<if test="item.singleValue==false" >
+							<foreach collection="item.values" item="value"  separator=","  open="(" close=")">
+								#{value}
+							
+							</foreach>
+						</if>
+			 		</if>
+			 			
+			 		
+			 		
+		 		</if>
+		 		
+		 		<if test="item.simple==false" >
+		 		(
+		 			 ${item.sql}
+		 			<foreach collection="item.cdts" item="cdt" >
+		 				
+		 				<if test="cdt.num>0">
+		 					 ${item.separator}
+		 				</if>
+		 				
+		 				 ${cdt.sql}
+				 		<if test="cdt.hasValue" >
+				 			<if test="cdt.singleValue" >
+								#{cdt.value}
+							</if>
+							<if test="cdt.singleValue==false">
+								<foreach collection="cdt.values" item="value"  separator="," open="(" close=")">
+									#{value}
+								
+								</foreach>
+							</if>
+				 			
+				 		</if>
+		 			</foreach>
+		 			 ${item.suffixSql}
+		 		)
+		 		</if>
+		 		 
+		 	</foreach>
+		</where>
+	</sql>
+	<sql id="order">
+		<if test="orderCol!=null and orderCol!=''">
+			order by ${orderCol}
+		</if>
+	</sql>
+	<sql id="page">
+		<if test="rp>0">
+		 LIMIT  #{firstResult} , #{rp}
+		</if>
+	</sql> 
+</mapper>

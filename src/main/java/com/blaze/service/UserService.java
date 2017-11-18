@@ -1,16 +1,12 @@
 package com.blaze.service;
 
-import javax.annotation.Resource;
-
-import org.springframework.stereotype.Service;
-
 import com.blaze.biz.User;
 import com.blaze.dao.IUserDao;
 
-@Service("userService")
+//@Service("userService")
 public class UserService {
 
-	@Resource
+//	@Resource
 	private IUserDao userDao;
 
 	public User findById(int id) {

@@ -1,22 +1,27 @@
 package com.blaze.test;
 
-import com.blaze.crawler.Bug;
-import com.blaze.crawler.XixiProxyCrawler;
+import java.util.List;
+import java.util.Random;
 
-import junit.framework.TestCase;
+import com.blaze.biz.Proxy;
+import com.blaze.common.S;
+import com.blaze.dao.ProxyDao;
+import com.blaze.dao.base.Query;
 
-public class ProxyTest{
+public class ProxyTest extends TestBase {
 
 	public void test() {
-		System.out.println(11);
-//		Bug bug = new Bug();
-//		bug.setUrl("http://www.xicidaili.com/nn/");
-//		new XixiProxyCrawler(bug).crawl();
+		Random random = new Random();
+		for (int i = 0; i < 6; i++) {
+			System.out.println(random.nextInt(33)+1);
+		}
+		System.out.println(random.nextInt(16)+1);
 	}
 	
-	public static void main(String[] args) {
-		Bug bug = new Bug();
-		bug.setUrl("http://www.xicidaili.com/nn/");
-		new XixiProxyCrawler(bug).crawl();
-	}
+//	<constructor-arg index="0" ref="org.mybatis.spring.SqlSessionTemplate" />
+//	<!-- DAO�ӿ����ڰ�����Spring���Զ��������µ��� -->
+//	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+//		<property name="basePackage" value="com.blaze.dao" />
+//		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
+//	</bean>
 }

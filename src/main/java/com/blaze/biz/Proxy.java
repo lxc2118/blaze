@@ -1,8 +1,14 @@
 package com.blaze.biz;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Proxy {
+import org.springframework.stereotype.Component;
+
+import com.blaze.common.IPk;
+
+@Component
+public class Proxy implements IPk,Serializable{
 
 	private Long id;
 	
@@ -92,6 +98,10 @@ public class Proxy {
 
 	public void setUpdateTime(Date updateTime) {
 		this.updateTime = updateTime;
+	}
+	
+	public  Object acqPk(){
+		return id;
 	}
 	
 }

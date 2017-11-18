@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.blaze.dao.ProxyDao">
+<resultMap type="com.blaze.biz.Proxy" id="BaseResultMap">
+	<result column="id" property="id" jdbcType="BIGINT"/>
+	<result column="ip" property="ip" jdbcType="VARCHAR"/>
+	<result column="port" property="port" jdbcType="INTEGER"/>
+	<result column="anonymity" property="anonymity" jdbcType="VARCHAR"/>
+	<result column="type" property="type" jdbcType="VARCHAR"/>
+	<result column="country" property="country" jdbcType="VARCHAR"/>
+	<result column="address" property="address" jdbcType="VARCHAR"/>
+	<result column="speed" property="speed" jdbcType="DOUBLE"/>
+	<result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+</resultMap>
+
+<sql id="cols">
+	 t.id
+	, t.ip
+	, t.port
+	, t.anonymity
+	, t.type
+	, t.country
+	, t.address
+	, t.speed
+	, t.update_time
+</sql>
+
+<select id="find" resultMap="BaseResultMap" parameterType="com.blaze.dao.base.Query" >
+	select 
+	<include refid="cols" />
+	from proxy t
+	<include refid="sql.where"></include>
+	<include refid="sql.order"></include>
+	<include refid="sql.page"></include>
+</select>
+<insert id="insert" parameterType="com.blaze.biz.Proxy"  useGeneratedKeys="true"  keyProperty="id" >
+	insert into proxy (
+				 ip
+						, port
+						, anonymity
+						, type
+						, country
+						, address
+						, speed
+						, update_time
+				)values(
+				 #{ip}
+						, #{port}
+						, #{anonymity}
+						, #{type}
+						, #{country}
+						, #{address}
+						, #{speed}
+						, #{updateTime}
+			)
+
+
+</insert>
+<update id="update" parameterType="com.blaze.biz.Proxy" >
+	update proxy set
+		 ip=#{ip}
+		, port=#{port}
+		, anonymity=#{anonymity}
+		, type=#{type}
+		, country=#{country}
+		, address=#{address}
+		, speed=#{speed}
+		, update_time=#{updateTime}
+		where 
+			 id=#{id}
+</update>
+<delete id="delete" parameterType="com.blaze.biz.Proxy" >
+	delete from proxy 
+		where
+			 id=#{id}
+</delete>
+<select id="get" resultMap="BaseResultMap" parameterType="Object">
+	select
+		<include refid="cols" />
+	
+		from proxy t where 
+			id=#{value} 
+</select>
+<select id="findCnt" parameterType="com.blaze.dao.base.Query" resultType="java.lang.Integer" >
+	select count(*) from proxy t 
+	<include refid="sql.where"></include>
+</select>
+
+<select id="findMap" parameterType="com.blaze.dao.base.Query" resultType="java.util.Map" >
+	select ${columns} from proxy t 
+	<include refid="sql.where"></include>
+</select>
+</mapper>
